@@ -43,6 +43,7 @@ These settings follow [Vite's official static deployment guide](https://vite.dev
 - A character kicks the first `o` in the second “Good”. It rolls, changes into `a`, and stays at the `a` in “games”. The source `o` fades back in so the heading remains readable. Leaving hover stops the looping dances but does not roll the landed `a` back. Re-enter, press Enter/Space, or tap to replay.
 - The final destination is measured from the actual letter positions, including responsive resize.
 - Each game card has a genre-specific hover/focus treatment: bingo balls, quiz marks, tumbling dice, fanned Whot cards, Ayo seeds, waving park characters, bike/car trails, a wobbling danfo, a peeking mask, CV papers and a basketball, ink splashes, arcade pixels, and treatments for the rest of the catalogue.
+- Hover or keyboard-focus Sign in or Create free account to reveal an agent typing on a laptop. Hands alternate, the character nods, and code appears on the screen. The original links remain clickable.
 - Hover or focus Help to reveal a character holding a phone; click to open the Help panel.
 - Favourites and theme preferences save in browser localStorage when available. The full game list and FAQs expand locally.
 - Touch can trigger the headline; focusing/tapping a card reveals its effect while retaining its normal game link. Reduced-motion settings disable the looping motion and use a static letter landing.
@@ -73,3 +74,4 @@ This is a standalone frontend recreation. Sign-in, tournaments, leaderboards, su
 start.ng branding, text, and game artwork are retained from the supplied references and public site for this recreation; they remain the property of their respective owners. New characters and motion treatments are editable SVG/CSS in this project.
 
 The optional `.openai/hosting.json` is used only for this chat's private preview and is not needed by Vercel or Netlify. It contains no secrets. The export ZIP leaves it out.
+
