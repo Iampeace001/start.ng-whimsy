@@ -19,7 +19,7 @@ npm run build
 npm run preview
 ```
 
-The production output is `dist/`. The build includes strict TypeScript checking. Tests cover game motion selection, catalogue uniqueness, and the rolling letter's final position. The test command uses Node's built-in TypeScript support; Node 24 is recommended.
+The production output is `dist/`. The build includes strict TypeScript checking. Tests cover game motion selection and catalogue uniqueness. The test command uses Node's built-in TypeScript support; Node 24 is recommended.
 
 ## Deploy from GitHub
 
@@ -42,27 +42,25 @@ These settings follow [Vite's official static deployment guide](https://vite.dev
 - Hover or focus the top-left logo to roll its icon. Click the top-left logo to toggle its play/pause icon with a small spring and spark effect. It still navigates to the top of the page.
 - Hover or focus Play now to reveal a tiny rolling controller and sparkles; clicking gives a small press animation and still scrolls to the games.
 
-- Hover or keyboard-focus the headline: both `o`s in “Good vibes” jump alternately; the `i` dot bounces; the `G` in “Good games” dances.
-- A character kicks the first `o` in the second “Good”. It rolls, changes into `a`, and stays at the `a` in “games”. The source `o` fades back in so the heading remains readable. Leaving hover stops the looping dances but does not roll the landed `a` back. Re-enter, press Enter/Space, or tap to replay.
-- The final destination is measured from the actual letter positions, including responsive resize.
+- Move the pointer over “Good vibes.” and “Good games.”: each line gently leans toward the pointer, with a smooth return to its resting position when the pointer leaves. Headline ball, kick, and letter-bounce animations have been removed. Reduced-motion preferences keep the text still.
 - Each game card has a genre-specific hover/focus treatment: bingo balls, quiz marks, tumbling dice, fanned Whot cards, Ayo seeds, waving park characters, bike/car trails, a wobbling danfo, a peeking mask, CV papers and a basketball, ink splashes, arcade pixels, and treatments for the rest of the catalogue.
 - Hover or keyboard-focus Sign in or Create free account to reveal an agent typing on a laptop. Hands alternate, the character nods, and code appears on the screen. The original links remain clickable.
 - Hover or focus Help to reveal a character holding a phone; click to open the Help panel.
 - Favourites and theme preferences save in browser localStorage when available. The full game list and FAQs expand locally.
-- Touch can trigger the headline; focusing/tapping a card reveals its effect while retaining its normal game link. Reduced-motion settings disable the looping motion and use a static letter landing.
+- Touch can trigger the headline; focusing/tapping a card reveals its effect while retaining its normal game link. Reduced-motion settings disable looping motion and headline tilt.
 
 ## Project structure
 
 ```text
 src/
   App.tsx                  Page layout and local state
-  components/Headline.tsx  Letter animation lifecycle and measured landing
+  components/Headline.tsx  Pointer-following headline tilt
   components/Agent.tsx     Original vector character
   components/GameCard.tsx  Game card and favourite action
   components/GameEffects.tsx  Genre-specific vector/CSS effects
   components/Help.tsx      Phone character and accessible Help panel
   data/games.ts            Typed, static community/creator catalogue
-  lib/motion.ts            Genre selection and rolling animation frames
+  lib/motion.ts            Game genre selection
   styles/                 Reference appearance and interaction styles
 public/
   assets/                  Bundled artwork for initial cards and banner

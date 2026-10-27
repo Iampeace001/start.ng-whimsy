@@ -1,41 +1,14 @@
-/* Letter choreography preserves every resting glyph's width and baseline. */
-.whimsical-headline .letter { transform-origin: 50% 90%; }
-.whimsical-headline .vibe-o { z-index: 2; }
-.whimsical-headline.active .vibe-o { animation: alternating-hop 1.1s cubic-bezier(.36,0,.66,1) infinite; }
-.whimsical-headline.active .second-o { animation-delay: -.55s; }
-.whimsical-headline.active .vibe-o { color: transparent; }
-.whimsical-headline.active .vibe-o::after, .rolling-o::after {
-  content: ''; position: absolute; left: 4%; top: 24%; width: 94%; aspect-ratio: 1;
-  border-radius: 50%; border: 2px solid #292a23;
-  background: linear-gradient(40deg,transparent 47%,#292a23 48% 51%,transparent 52%),linear-gradient(100deg,transparent 47%,#292a23 48% 51%,transparent 52%),radial-gradient(circle at 30% 25%,#f0ffc6,#d8fd71 55%,#afda4a);
-  box-shadow: inset -3px -4px 0 #292a2322;
+/* Subtle pointer-following tilt, with the original typography intact. */
+.mouse-lean-headline { position: relative; }
+.mouse-lean-headline .tilt-line {
+  display: inline-block; position: relative; transform-origin: center;
+  transform: perspective(900px) translate3d(var(--lean-x,0px),var(--lean-y,0px),0) rotateX(var(--lean-rx,0deg)) rotateY(var(--lean-ry,0deg)) rotateZ(var(--lean-rz,0deg));
+  transition: transform .45s cubic-bezier(.2,.7,.3,1);
 }
-.dotted-i { position: relative; }
-.i-dot { position: absolute; width: .13em; height: .13em; top: .14em; left: 50%; margin-left: -.065em; background: currentColor; border-radius: 1px; transform-origin: center bottom; }
-.whimsical-headline.active .i-dot { border-radius: 50%; background: var(--lime); box-shadow: inset 0 0 0 2px #292a23; animation: dot-hop .8s ease-in-out infinite; }
-.whimsical-headline.active .dancing-g { animation: g-dance .85s ease-in-out infinite; }
-.kick-slot { position: relative; }
-.rolling-glyph { position: absolute; top: 0; left: 0; width: 100%; z-index: 5; visibility: hidden; transform-origin: 50% 76%; pointer-events: none; }
-.rolling-o { display: block; position: relative; color: transparent; transition: opacity .2s; }
-.rolling-a { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity .25s; color: var(--ink); }
-.phase-kick .rolling-glyph, .phase-morph .rolling-glyph, .phase-landed .rolling-glyph { visibility: visible; }
-.phase-kick .source-o, .phase-morph .source-o { opacity: 0; }
-.source-o { transition: opacity .3s; }
-.phase-kick .destination-a, .phase-morph .destination-a, .phase-landed .destination-a { color: transparent; }
-.phase-morph .rolling-o, .phase-landed .rolling-o { opacity: 0; }
-.phase-morph .rolling-a, .phase-landed .rolling-a { opacity: 1; }
-.phase-landed.active .rolling-a { color: #718e21; }
-.whimsical-headline.phase-kick .kicker, .whimsical-headline.phase-morph .kicker { animation: enter-kicker .4s cubic-bezier(.2,.8,.3,1) forwards; }
-.whimsical-headline.phase-kick .kick-leg { animation: leg-kick .55s .35s ease-in-out; }
-.whimsical-headline.phase-kick .agent-arm { animation: arm-swing .55s .35s ease-in-out; }
-.whimsical-headline.phase-landed .kicker { opacity: 0; transition: opacity .25s,transform .3s; }
-@keyframes alternating-hop {
-  0%,48%,100% { transform: translateY(0) scale(1.04,.94); }
-  17% { transform: translateY(-.38em) scale(.95,1.04) rotate(-10deg); }
-  34% { transform: translateY(0) scale(1.13,.85) rotate(0); }
+.mouse-lean-headline[data-leaning=true] .tilt-line { transition-duration: .14s; }
+@media (prefers-reduced-motion: reduce) {
+  .mouse-lean-headline .tilt-line { transform: none; transition: none; }
 }
-@keyframes dot-hop { 0%,100% { transform: translateY(0) scale(1.15,.8); } 48% { transform: translateY(-.3em) scale(.9,1.1); } }
-@keyframes g-dance { 0%,100% { transform: rotate(-8deg) translateY(0); } 25% { transform: rotate(9deg) translateY(-.07em) scale(1.02,.98); } 50% { transform: rotate(-9deg) translateY(0); } 75% { transform: rotate(7deg) translateY(-.1em); } }
 
 /* CSS-only game treatments: no canvas, plugins, server, or animation dependency. */
 .game .art { position: relative; isolation: isolate; background: #292a23; }
@@ -110,8 +83,6 @@
 @keyframes score-rise { 0% { opacity: 0; transform: translateY(15px); } 30%,70% { opacity: 1; } 100% { opacity: 0; transform: translateY(-20px); } }
 @keyframes star-float { 0%,100% { transform: translateY(0) rotate(-10deg); } 50% { transform: translateY(-15px) rotate(15deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .whimsical-headline.active .vibe-o,.whimsical-headline.active .i-dot,.whimsical-headline.active .dancing-g,.whimsical-headline .kicker,.whimsical-headline .kick-leg,.whimsical-headline .agent-arm { animation: none !important; }
   .game-effect *,.game-effect *::before,.game-effect *::after { animation: none !important; }
   .game .art img { transition: none; }.game:is(:hover,:focus-within) .art img { transform: none; }
-  .rolling-o,.rolling-a,.source-o { transition: none; }
 }

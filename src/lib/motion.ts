@@ -32,13 +32,3 @@ export function gameMotion(game: Pick<Game, 'slug' | 'title' | 'description'>): 
   return 'adventure';
 }
 
-/** Finish upright at the measured target. Never animate the glyph back home. */
-export function rollFrames(distance: number, vertical = 0): Keyframe[] {
-  return [
-    { transform: 'translate(0,0) rotate(0deg)', offset: 0 },
-    { transform: 'translate(0,0) rotate(-12deg)', offset: 0.22 },
-    { transform: `translate(${distance * 0.48}px,${vertical - 13}px) rotate(330deg)`, offset: 0.58 },
-    { transform: `translate(${distance}px,${vertical}px) rotate(720deg)`, offset: 0.92 },
-    { transform: `translate(${distance}px,${vertical}px) rotate(720deg)`, offset: 1 },
-  ];
-}
