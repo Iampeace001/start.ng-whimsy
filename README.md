@@ -39,8 +39,8 @@ These settings follow [Vite's official static deployment guide](https://vite.dev
 
 ## Interactions
 
-- Click the top-left logo to toggle its play/pause icon with a small spring and spark effect. It still navigates to the top of the page.
-- Hover or focus Play now to reveal a tiny controller and sparkles; clicking gives a small press animation and still scrolls to the games.
+- Hover or focus the top-left logo to roll its icon. Click the top-left logo to toggle its play/pause icon with a small spring and spark effect. It still navigates to the top of the page.
+- Hover or focus Play now to reveal a tiny rolling controller and sparkles; clicking gives a small press animation and still scrolls to the games.
 
 - Hover or keyboard-focus the headline: both `o`s in “Good vibes” jump alternately; the `i` dot bounces; the `G` in “Good games” dances.
 - A character kicks the first `o` in the second “Good”. It rolls, changes into `a`, and stays at the `a` in “games”. The source `o` fades back in so the heading remains readable. Leaving hover stops the looping dances but does not roll the landed `a` back. Re-enter, press Enter/Space, or tap to replay.
@@ -77,5 +77,6 @@ This is a standalone frontend recreation. Sign-in, tournaments, leaderboards, su
 start.ng branding, text, and game artwork are retained from the supplied references and public site for this recreation; they remain the property of their respective owners. New characters and motion treatments are editable SVG/CSS in this project.
 
 The optional `.openai/hosting.json` is used only for this chat's private preview and is not needed by Vercel or Netlify. It contains no secrets. The export ZIP leaves it out.
+
 
 
