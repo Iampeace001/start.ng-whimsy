@@ -1,2 +1,9 @@
 outputs/
+node_modules/
+dist/
+.sites-runtime/
+.vercel/
+.netlify/
+*.local
+.DS_Store
 
