@@ -38,6 +38,7 @@ export function AccountLink({ children, variant }: { children: ReactNode; varian
         </g>
         <g className="typing-spark" stroke="#8da53e" strokeWidth="2" strokeLinecap="round"><path d="M158 44V54M153 49H163M179 61V67M176 64H182" /></g>
       </svg>
+      <span className="account-caption">{variant === 'nav' ? 'Click to sign in' : "Let's create an account"}</span>
     </span>
   </a>;
 }

@@ -1,15 +1,17 @@
 .account-link { position: relative; isolation: isolate; overflow: visible; }
 .account-scene {
-  position: absolute; width: 184px; height: 155px; display: block;
+  position: absolute; width: 136px; height: 130px; display: flex;
+  flex-direction: column; align-items: center; padding: 6px 8px 8px;
   z-index: 50; pointer-events: none; visibility: hidden; opacity: 0;
-  border: 1.5px solid var(--ink); border-radius: 22px;
-  background: var(--card); box-shadow: 5px 5px 0 var(--lime), 0 12px 25px #292a2318;
+  border: 1.5px solid var(--ink); border-radius: 16px;
+  background: var(--card); box-shadow: 3px 3px 0 var(--lime), 0 8px 20px #292a2318;
   transform: translateY(12px) rotate(-5deg) scale(.85);
   transform-origin: center bottom;
   transition: opacity .16s, transform .35s cubic-bezier(.2,1.4,.4,1), visibility .16s;
 }
-.account-scene svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.account-link--hero .account-scene { bottom: calc(100% + 14px); left: 50%; margin-left: -92px; }
+.account-scene svg { display: block; width: 100%; height: 88px; flex: none; overflow: visible; }
+.account-caption { display: block; margin-top: 3px; color: var(--ink); font: 600 11px/1.25 Helvetica Neue,Helvetica,Arial,sans-serif; text-align: center; white-space: normal; }
+.account-link--hero .account-scene { bottom: calc(100% + 12px); left: 50%; margin-left: -68px; }
 .account-link--nav .account-scene { top: calc(100% + 14px); right: 0; transform-origin: top right; transform: translateY(-10px) rotate(5deg) scale(.85); }
 .account-link:is(:hover,:focus-visible) .account-scene { visibility: visible; opacity: 1; transform: translateY(0) rotate(0) scale(1); }
 .typing-head { transform-origin: 67px 72px; animation: typing-nod 1.8s ease-in-out infinite; }
@@ -27,9 +29,11 @@
 @keyframes typing-blink { 50% { opacity: 0; } }
 @keyframes typing-sparkle { 0%,100% { opacity: .25; transform: scale(.8) rotate(-8deg); } 50% { opacity: 1; transform: scale(1.05) rotate(8deg); } }
 @media (max-width: 600px) {
-  .account-scene { width: 164px; height: 139px; }
-  .account-link--hero .account-scene { margin-left: -82px; }
-  .account-link--nav .account-scene { right: -10px; }
+  .account-scene { width: 128px; height: 124px; }
+  .account-scene svg { height: 82px; }
+  .account-caption { font-size: 10.5px; }
+  .account-link--hero .account-scene { margin-left: -64px; }
+  .account-link--nav .account-scene { right: -4px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .account-scene { transition: opacity .15s; transform: none; }
