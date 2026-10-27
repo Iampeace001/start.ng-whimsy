@@ -1,0 +1,25 @@
+.playful-logo::before { display: none; }
+.brand-symbol { position: relative; display: inline-block; flex: none; width: 26px; height: 26px; transition: transform .2s; }
+.brand-symbol svg { display: block; width: 100%; height: 100%; }
+.playful-logo:is(:hover,:focus-visible) .brand-symbol { transform: rotate(-7deg); }
+.logo-tapped .brand-symbol { animation: logo-toggle-pop .55s cubic-bezier(.2,.8,.3,1); }
+.brand-spark { position: absolute; width: 4px; height: 4px; background: var(--lime); border: 1px solid var(--ink); border-radius: 1px; opacity: 0; pointer-events: none; }
+.spark-left { left: -8px; top: -3px; --spark-x: -5px; }.spark-right { right: -7px; bottom: -2px; --spark-x: 5px; }
+.logo-tapped .brand-spark { animation: logo-spark-pop .6s ease-out both; }
+.playful-play { position: relative; isolation: isolate; overflow: visible; }
+.controller-sprite { position: absolute; width: 54px; height: 36px; top: -25px; right: -15px; opacity: 0; pointer-events: none; transform: translateY(12px) rotate(14deg) scale(.7); transition: opacity .15s,transform .3s cubic-bezier(.2,1.5,.4,1); filter: drop-shadow(0 3px 0 #292a2318); }
+.controller-sprite svg { width: 100%; height: 100%; display: block; }
+.playful-play:is(:hover,:focus-visible) .controller-sprite,.play-tapped .controller-sprite { opacity: 1; transform: translateY(0) rotate(-10deg) scale(1); }
+.play-spark { position: absolute; font-size: 15px; line-height: 1; color: var(--lime); -webkit-text-stroke: .5px var(--ink); pointer-events: none; opacity: 0; }
+.play-spark-one { right: -22px; top: 11px; }.play-spark-two { right: 39px; top: -17px; font-size: 11px; }
+.playful-play:is(:hover,:focus-visible) .play-spark { animation: play-spark-twinkle 1.3s ease-in-out infinite; }.playful-play:is(:hover,:focus-visible) .play-spark-two { animation-delay: -.65s; }
+.play-tapped { animation: play-button-tap .4s ease-out; }.play-tapped .play-spark { animation: logo-spark-pop .6s ease-out both; }
+@keyframes logo-toggle-pop { 0% { transform: scale(1); } 25% { transform: scale(.8) rotate(-12deg); } 65% { transform: scale(1.16) rotate(9deg); } 100% { transform: scale(1); } }
+@keyframes logo-spark-pop { 0% { opacity: 0; transform: scale(.2); } 35% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--spark-x,4px),-9px) rotate(80deg) scale(1.1); } }
+@keyframes play-spark-twinkle { 0%,100% { opacity: 0; transform: scale(.5) rotate(-10deg); } 50% { opacity: 1; transform: translateY(-3px) scale(1) rotate(10deg); } }
+@keyframes play-button-tap { 0%,100% { transform: scale(1); } 30% { transform: scale(.95); } 65% { transform: scale(1.035); } }
+@media (prefers-reduced-motion: reduce) {
+  .brand-symbol,.controller-sprite { transition: none; }
+  .playful-logo .brand-symbol,.playful-logo .brand-spark,.playful-play,.playful-play .play-spark { animation: none !important; }
+  .playful-play:is(:hover,:focus-visible) .play-spark { opacity: 1; }
+}
